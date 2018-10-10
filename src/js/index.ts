@@ -12,8 +12,9 @@ export class GameEngine
 {
 
     // items in the game
-    public ball:Ball;
-    public player1:Player;
+    public ball: Ball;
+    public ball2: Ball;
+    public player1: Player;
  
     // canvas info
     public canvasWidth:number;
@@ -52,8 +53,11 @@ export class GameEngine
         this.player1 = new Player(new Vector(20,10), this);
         this.objects.push(this.player1);
 
-        this.ball = new Ball(new Vector(this.canvasWidth/2, this.canvasHeight/2), this);
+        this.ball = new Ball(new Vector(this.canvasWidth/2, this.canvasHeight/2,), this, new Vector(0.7, 1));
         this.objects.push(this.ball);
+
+        this.ball2 = new Ball(new Vector(this.canvasWidth/2, this.canvasHeight/5), this, new Vector(1, 0.6));
+        this.objects.push(this.ball2);
 
         this.gameLoop();
     }
@@ -129,9 +133,6 @@ export class GameEngine
         
         // call the main gamelop again (~60fps by default)
         window.requestAnimationFrame(this.gameLoop.bind(this));
-
-
-
     }
 }
 
